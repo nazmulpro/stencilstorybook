@@ -40,6 +40,7 @@
     "@storybook/html": "^6.4.19",
     "@types/jest": "^27.0.3",
     "babel-loader": "^8.2.3",
+    "chromatic": "^6.5.1",
     "jest": "^27.4.5",
     "jest-cli": "^27.4.5",
     "puppeteer": "^10.0.0"
