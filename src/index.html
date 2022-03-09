@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Stencil Component Starter</title>
+
+    <script type="module" src="/build/stencilstorybool.esm.js"></script>
+    <script nomodule src="/build/stencilstorybool.js"></script>
+  </head>
+  <body>
+    <!-- <cb-treeview data-source='[{"id": "5","name": "Cat 3","parentId": "6","children": []}]'></cb-treeview> <cb-treeview data-source='[{"id": "5","name": "Cat 3","parentId": "6","children": []}]'></cb-treeview>-->
+    <cb-treeview data-source=""></cb-treeview>
+    <button id="btnSelect">Get Selected Data</butto>
+    <script>
+      const data = [
+        {
+          id: '1',
+          name: 'Category 1',
+          parentId: null,
+          children: [
+            {
+              id: 3,
+              name: 'Sub Category 1',
+              parentId: 1,
+              children: [
+                {
+                  id: 2,
+                  name: 'Sub Sub Category 1',
+                  parentId: 3,
+                  children: [
+                    {
+                      id: 8,
+                      name: 'Another Category',
+                      parentId: 2,
+                      children: [],
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              id: 4,
+              name: 'Sub Category 2',
+              parentId: 1,
+              children: [],
+            },
+          ],
+        },
+        {
+          id: 5,
+          name: 'Cat 3',
+          parentId: 6,
+          children: [],
+        },
+      ];
+
+      const cbTreeView = document.querySelector('cb-treeview');
+      cbTreeView.dataSource = data;
+
+      var el = document.getElementById('overlayBtn');
+      let btnGetSelectedVale = document.getElementById('btnSelect');
+      btnGetSelectedVale.addEventListener('click',()=> {
+        cbTreeView.getCheckedData().then((result)=>{
+          console.log(result);
+        });
+        
+      })
+
+      
+    </script>
+  </body>
+</html>
