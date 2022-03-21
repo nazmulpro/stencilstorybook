@@ -59,10 +59,10 @@ export const Default = () => {
 }; */
 
 export default {
-  title: 'Components/tree',
+  title: 'Components/cb-treeview',
 };
 
-const Template = args => `<cb-treeview data-source="${args.data}"></cb-treeview>`;
+const Template = args => `<cb-treeview data-source='${JSON.stringify(args.data)}'></cb-treeview>`;
 
 export const Tree = Template.bind({});
 Tree.args = {

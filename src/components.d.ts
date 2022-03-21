@@ -6,6 +6,15 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface CbDropdown {
+        "dataSource": Array<object>;
+        "getSelectedData": () => Promise<string>;
+    }
+    interface CbJsonformatter {
+        "cols": number;
+        "dataSource": Array<object> | object | string;
+        "rows": number;
+    }
     interface CbTreeview {
         "dataSource": Array<object> | string;
         "getCheckedData": () => Promise<any[]>;
@@ -26,6 +35,18 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLCbDropdownElement extends Components.CbDropdown, HTMLStencilElement {
+    }
+    var HTMLCbDropdownElement: {
+        prototype: HTMLCbDropdownElement;
+        new (): HTMLCbDropdownElement;
+    };
+    interface HTMLCbJsonformatterElement extends Components.CbJsonformatter, HTMLStencilElement {
+    }
+    var HTMLCbJsonformatterElement: {
+        prototype: HTMLCbJsonformatterElement;
+        new (): HTMLCbJsonformatterElement;
+    };
     interface HTMLCbTreeviewElement extends Components.CbTreeview, HTMLStencilElement {
     }
     var HTMLCbTreeviewElement: {
@@ -39,11 +60,21 @@ declare global {
         new (): HTMLMyComponentElement;
     };
     interface HTMLElementTagNameMap {
+        "cb-dropdown": HTMLCbDropdownElement;
+        "cb-jsonformatter": HTMLCbJsonformatterElement;
         "cb-treeview": HTMLCbTreeviewElement;
         "my-component": HTMLMyComponentElement;
     }
 }
 declare namespace LocalJSX {
+    interface CbDropdown {
+        "dataSource"?: Array<object>;
+    }
+    interface CbJsonformatter {
+        "cols"?: number;
+        "dataSource"?: Array<object> | object | string;
+        "rows"?: number;
+    }
     interface CbTreeview {
         "dataSource"?: Array<object> | string;
     }
@@ -62,6 +93,8 @@ declare namespace LocalJSX {
         "middle"?: string;
     }
     interface IntrinsicElements {
+        "cb-dropdown": CbDropdown;
+        "cb-jsonformatter": CbJsonformatter;
         "cb-treeview": CbTreeview;
         "my-component": MyComponent;
     }
@@ -70,6 +103,8 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "cb-dropdown": LocalJSX.CbDropdown & JSXBase.HTMLAttributes<HTMLCbDropdownElement>;
+            "cb-jsonformatter": LocalJSX.CbJsonformatter & JSXBase.HTMLAttributes<HTMLCbJsonformatterElement>;
             "cb-treeview": LocalJSX.CbTreeview & JSXBase.HTMLAttributes<HTMLCbTreeviewElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
         }

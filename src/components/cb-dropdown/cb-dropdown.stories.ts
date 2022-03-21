@@ -2,7 +2,7 @@ export default {
   title: 'Components/cb-dropdown',
 };
 
-const Template = args => `<cb-dropdown data-source="${args.data}"></cb-dropdown>`;
+const Template = args => `<cb-dropdown data-source='${JSON.stringify(args.data)}'></cb-dropdown>`;
 
 export const Filter = Template.bind({});
 Filter.args = {
